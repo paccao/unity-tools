@@ -9,17 +9,20 @@ namespace joelplumppu
 	public static class ToolsMenu
 	{
 		[MenuItem("Tools/Setup/Create Default Folders")]
-		public static void CreateDefaultFolders()
+		static void CreateDefaultFolders()
 		{
 			Dir("_Project", "Scripts", "Art", "Scenes");
 			Refresh();
 		}
 
-		public static void Dir(string root, params string[] dir)
+		static void Dir(string root, params string[] dir)
 		{
 			var fullPath = Combine(dataPath, root);
 			foreach (var newDirectory in dir)
 				CreateDirectory(Combine(fullPath, newDirectory));
 		}
+
+		static string GetGistUrl(string id, string user = "paccao") =>
+			$"https://gist.github.com/{user}/{id}/raw";
 	}
 }
