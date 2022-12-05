@@ -22,6 +22,14 @@ namespace joelplumppu
 				CreateDirectory(Combine(fullPath, newDirectory));
 		}
 
+		[MenuItem("Tools/Setup/Load Minimal Packages")]
+		static async void LoadMinimalManifest()
+		{
+			var url = GetGistUrl("3caf039c2bf3ea7ff24ebad91bd79e78");
+			var contents = await GetContents(url);
+			ReplacePackageFile(contents);
+		}
+
 		static string GetGistUrl(string id, string user = "paccao") =>
 			$"https://gist.github.com/{user}/{id}/raw";
 
