@@ -25,6 +25,7 @@ namespace joelplumppu
 		[MenuItem("Tools/Setup/Load Minimal Packages")]
 		static async void LoadMinimalManifest()
 		{
+			// https://gist.github.com/paccao/3caf039c2bf3ea7ff24ebad91bd79e78
 			var url = GetGistUrl("3caf039c2bf3ea7ff24ebad91bd79e78");
 			var contents = await GetContents(url);
 			ReplacePackageFile(contents);
