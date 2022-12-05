@@ -3,10 +3,12 @@ using static System.IO.Directory;
 using static System.IO.Path;
 using static UnityEngine.Application;
 using static UnityEditor.AssetDatabase;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.IO;
+using UnityEngine;
 
-namespace joelplumppu
-{
-	public static class ToolsMenu
+public static class ToolsMenu
 	{
 		[MenuItem("Tools/Setup/Create Default Folders")]
 		static void CreateDefaultFolders()
@@ -47,8 +49,7 @@ namespace joelplumppu
 		static void ReplacePackageFile(string contents)
 		{
 			var existingPackageFile = Path.Combine(Application.dataPath, "../Packages/manifest.json");
-			File.WriteAllText(existingPackageFile.contents);
+			File.WriteAllText(existingPackageFile, contents);
 			UnityEditor.PackageManager.Client.Resolve();
 		}
 	}
-}
