@@ -34,5 +34,12 @@ namespace joelplumppu
 				return content;
 			}
 		}
+
+		static void ReplacePackageFile(string contents)
+		{
+			var existingPackageFile = Path.Combine(Application.dataPath, "../Packages/manifest.json");
+			File.WriteAllText(existingPackageFile.contents);
+			UnityEditor.PackageManager.Client.Resolve();
+		}
 	}
 }
